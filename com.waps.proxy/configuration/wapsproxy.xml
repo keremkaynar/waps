@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:int="http://www.springframework.org/schema/integration"
+	xmlns:int-ip="http://www.springframework.org/schema/integration/ip"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/integration http://www.springframework.org/schema/integration/spring-integration.xsd
+		http://www.springframework.org/schema/integration/ip http://www.springframework.org/schema/integration/ip/spring-integration-ip.xsd">
+   
+	<!-- Server side - connected to browser -->
+	<int-ip:tcp-connection-factory id="wapsProxyServer" 
+		type="server"
+		port="8990"/>
+	<int-ip:tcp-inbound-gateway id="wapsProxyServerGateway"
+		connection-factory="wapsProxyServer"
+		request-channel="wapsProxyServerBytes2StringChannel"/>
+	<int:channel id="toSA" />
+	<int:object-to-string-transformer id="wapsProxyServerBytes2String"
+		input-channel="wapsProxyServerBytes2StringChannel"
+		output-channel="toSA"/>
+	<int:service-activator input-channel="toSA"
+		ref="wapsProxyRequestCaptureService"
+		method="captureRequestPart"/>
+	<bean id="wapsProxyRequestCaptureService"
+		class="com.waps.proxy.service.activator.WapsProxyRequestCaptureService">
+	</bean>
+</beans>
