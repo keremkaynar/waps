@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout/default">
+<head>
+<title>Adjust HTTP Request Fields</title>
+</head>
+<body>
+	<div layout:fragment="content">
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<span class="navbar-brand" th:text="${scanInfo.appAddress}">Web site</span>
+				</div>
+				<ul class="nav navbar-nav">
+					<li class="active"><a th:href="@{/operators/requestParameters}">Request Parameters</a></li>
+					<li><a th:href="@{/operators/responseParameters}">Response Parameters</a></li>
+					<li><a th:href="@{/operators/spider}">Spider</a></li>
+					<li><a th:href="@{/operators/entryPointFinder}">Entry Point Finder</a></li>
+				</ul>
+			</div>
+		</nav>
+		<section layout:fragment="operatorContent">
+			<p>Operator content goes here</p>
+		</section>
+	</div>
+</body>
+</html>

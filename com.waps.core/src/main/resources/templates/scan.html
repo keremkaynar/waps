@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorator="layout/default">
-<head lang="en">
+<head>
 <title>Scan web application</title>
 </head>
 <body>
@@ -13,7 +13,7 @@
 			</div>
 		</div>
 		<div class="row">
-			<form th:action="@{/operator}" th:object="${scanInfo}" method="post">
+			<form th:action="@{/operators}" th:object="${scanInfo}" method="post">
 				<div class="input-group col-md-8 col-md-offset-2">
 					<input type="text" class="form-control" id="appAddress"
 						placeholder="Enter web site" th:field="${scanInfo.appAddress}" />
