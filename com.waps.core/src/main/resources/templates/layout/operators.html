@@ -3,7 +3,7 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorator="layout/default">
 <head>
-<title>Adjust HTTP Request Fields</title>
+<title>Available Operations</title>
 </head>
 <body>
 	<div layout:fragment="content">
@@ -14,9 +14,10 @@
 				</div>
 				<ul class="nav navbar-nav">
 					<li class="active"><a th:href="@{/operators/requestParameters}">Request Parameters</a></li>
-					<li><a th:href="@{/operators/responseParameters}">Response Parameters</a></li>
-					<li><a th:href="@{/operators/spider}">Spider</a></li>
 					<li><a th:href="@{/operators/entryPointFinder}">Entry Point Finder</a></li>
+					<li><a th:href="@{/operators/spider}">Spider</a></li>
+					<li role="separator" class="divider"></li>
+					<li><a th:href="@{/operators/responseParameters}">Response Parameters</a></li>
 				</ul>
 			</div>
 		</nav>
